@@ -16,19 +16,27 @@ var moods = ["sad", "angry", "happy", "confused", "calm", "excited"]
     //append gif and rating to #gifs-view
 
 //create function to dynamically render buttons
+function renderButtons() {
+
 
     //empty buttons-view div
+    $("#buttons-view").empty()
 
     //for loop to iterate through array of movies
+    for (i=0; i<moods.length; i++) {
 
         //function to create buttons
-
+        var moodBtn = $("<button>");
         //add class of mood - class will be used to create click event later to generate gifs
-
+        moodBtn.addClass("mood");
         //add data attribute to pull the q words later
-
+        moodBtn.attr("data-word", moods[i]);
         //att the text of the mood to the button
+        $(moodBtn).text(moods[i])
+        $("#buttons-view").append(moodBtn);
 
+        };
+    };
 
 //create on click event for when a new mood is submitted
 $("#add-gif").click(function(event) {
