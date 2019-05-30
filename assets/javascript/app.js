@@ -2,11 +2,20 @@
 var moods = ["sad", "angry", "happy", "confused", "calm", "excited"]
 
 //create display function to display gifs in html - will call this function later for when a mood button is clicked
+function displayGIF () {
 
+    var mood = $(this).attr("data-word")
+    console.log(mood)
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + mood + "&api_key=k8hbtr9mNHZjp3GDaC6g0DADF0rSouaD&limit=10"
     //create ajax call with a limit of 10
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response)
 
     //create a variable to store the gif itself (embed url?)
-
+        var gif = response.data
     //create an element to display the rating
 
     //create a variable to store the rating
@@ -14,6 +23,9 @@ var moods = ["sad", "angry", "happy", "confused", "calm", "excited"]
     //create an element to display the rating 
 
     //append gif and rating to #gifs-view
+    $("#gifs-view").append(gif)
+    });
+};
 
 //create function to dynamically render buttons
 function renderButtons() {
@@ -22,8 +34,8 @@ function renderButtons() {
     //empty buttons-view div
     $("#buttons-view").empty()
 
-    //for loop to iterate through array of movies
-    for (i=0; i<moods.length; i++) {
+    //for loop to iterate through array of moods
+    for (var i=0; i<moods.length; i++) {
 
         //function to create buttons
         var moodBtn = $("<button>");
@@ -51,8 +63,9 @@ $("#add-gif").click(function(event) {
 
 })
 
-//call display function with on click even on mood buttons (class of mood defined in render buttons fx)
 
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
+//call display function with on click even on mood buttons (class of mood defined in render buttons fx)
+$(document).on("click", ".mood", displayGIF);
 
