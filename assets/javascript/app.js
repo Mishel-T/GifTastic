@@ -16,10 +16,10 @@ function displayGIF () {
         method: "GET"
       }).then(function(response) {
         console.log(response)
-    //for loope to iterate through each gif in the response array
+    //for loop to iterate through each gif in the response array
     for (var j= 0; j<response.data.length; j++) {
 
-    //create new div to store gif and rating
+    //create new div to store gif and rating block
     var newDiv = $("<div>");
     
     //create new div to store gif itself
@@ -41,7 +41,31 @@ function displayGIF () {
 
     //append gif and rating to #gifs-view
     $("#gifs-view").append(newDiv)
-};
+    
+    //create on click event function to animate/stop gif using gifImg attributes
+
+    };
+
+     //create on click event function to animate/stop gif using gifImg attributes
+
+    $(".gif").on("click", function() {
+        //only works for every other gif...why??? - was happening when I was still in ajax function, works when moved outside
+        //var to hold boolean for if still===true, then on click animate, else still
+        var state = $(this).attr("data-state");
+        if (state === "still") {
+			   
+            var newSrc = $(this).attr("data-animate");
+            $(this).attr("src", newSrc);
+            $(this).attr("data-state", "animate");
+            
+         // if animate, change it to still
+        } else {
+            var newSrc = $(this).attr("data-still");
+            $(this).attr("src", newSrc);
+            $(this).attr("data-state", "still");
+                 }
+         }); 
+
     });
 };
 
@@ -73,6 +97,8 @@ $("#add-gif").on("click", function(event) {
     event.preventDefault();
     console.log("add-gif click event working")
     
+
+    
     //create a variable that pulls value from input box 
     var newMood = $("#keyword-input").val().trim();
     console.log(newMood)
@@ -83,6 +109,7 @@ $("#add-gif").on("click", function(event) {
     //call render buttons function to create button for new mood
     renderButtons();
 
+    $("#keyword-input").val("")
 
 })
 
