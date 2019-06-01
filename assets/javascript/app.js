@@ -1,3 +1,5 @@
+//closing notes: js all coded, now just need to style it
+
 //create initial array of moods
 var moods = ["sad", "angry", "happy", "confused", "calm", "excited"]
 
@@ -21,6 +23,8 @@ function displayGIF () {
 
     //create new div to store gif and rating block
     var newDiv = $("<div>");
+    //add class to newDiv so I can style it
+    $(newDiv).addClass("gif-block")
     
     //create new div to store gif itself
      var gifImg = $("<img>");
@@ -30,9 +34,9 @@ function displayGIF () {
 
     //pull gif attributes to use on click events on gifImg
     gifImg.attr({
-        "src": response.data[j].images.original_still.url,
-        "data-still": response.data[j].images.original_still.url,
-        "data-animate": response.data[j].images.original.url,
+        "src": response.data[j].images.fixed_height_still.url,
+        "data-still": response.data[j].images.fixed_height_still.url,
+        "data-animate": response.data[j].images.fixed_height.url,
         "data-state": "still",
         "class": "gif"
     });

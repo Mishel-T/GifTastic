@@ -2,7 +2,37 @@ body {
     background-color: rgb(243, 241, 241);
 }
 
-#gifs-view {
-    margin-right: 100px;
+p {
+    margin-bottom: 5px;
+}
 
+#buttons-view {
+    padding-top: 20px;
+    margin-bottom: 30px;
+}
+
+#gifs-view {
+    width: 850px;
+
+}
+
+#gif-form {
+    margin-top: 60px;
+}
+
+.mood,
+#add-gif {
+margin-left: 5px;
+margin-right: 5px;
+margin-bottom: 10px;
+border: none;
+border-radius: 6px;
+color:white;
+background-color: teal;
+}
+
+.gif-block{
+    margin-right: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
 }
