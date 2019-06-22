@@ -10,3 +10,6 @@ Wanna add a new mood? Feeling confused? Furious? Enter a new mood query in the '
 Want to animate the gif? Click directly on the gif still and watch hilarity ensue. 
 
 
+https://mishel-t.github.io/GifTastic/
+
+
